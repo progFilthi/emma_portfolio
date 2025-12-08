@@ -74,7 +74,7 @@ export function Hero() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
-            className="relative flex-shrink-0"
+            className="relative shrink-0"
           >
             {/* Outer glow ring */}
             <div className="absolute inset-0 rounded-full bg-teal/20 blur-xl scale-110" />
@@ -98,7 +98,7 @@ export function Hero() {
 
             {/* Image container with teal border */}
             <motion.div
-              className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full p-1 bg-gradient-to-br from-teal via-teal-light to-teal"
+              className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full p-1 bg-linear-to-br from-teal via-teal-light to-teal"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >
@@ -115,21 +115,7 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-            className="w-5 h-8 border-2 border-muted-foreground/30 rounded-full flex justify-center"
-          >
-            <motion.div className="w-1 h-2 bg-muted-foreground/50 rounded-full mt-2" />
-          </motion.div>
-        </motion.div>
+
       </div>
     </section>
   );
