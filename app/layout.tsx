@@ -39,6 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      
       <body className={`${inter.variable} font-sans antialiased`}>
         <ThemeProvider
           attribute="class"
@@ -48,6 +49,7 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
+        <script src="https://www.glancelytics.com/js/script.js" data-domain="emma-portfolio-three.vercel.app" defer></script>
       </body>
     </html>
   );
