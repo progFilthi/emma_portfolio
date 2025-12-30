@@ -1,17 +1,33 @@
 export interface Project {
   title: string;
   description: string;
+  bullets?: string[];
   tech: string[];
   github: string;
+  githubFrontend?: string;
   live?: string;
 }
 
 export const projects: Project[] = [
   {
-    title: "Blog Platform API",
-    description: "RESTful API built with Spring Boot featuring JWT authentication, role-based access control, and PostgreSQL integration. Deployed on AWS with S3 for media storage.",
-    tech: ["Java", "Spring Boot", "PostgreSQL", "AWS S3", "JWT"],
-    github: "https://github.com/progFilthi",
+    title: "Blog Post Application",
+    description: "A robust backend system for a blog platform built with modern Java practices. Features a complete RESTful API, secure authentication, and a clean layered architecture.",
+    bullets: [
+      "Developed a RESTful blog backend using **Java and Spring Boot**, implementing full CRUD APIs and supporting **20+ endpoints** following REST conventions.",
+      "Implemented **JWT authentication and RBAC** with Spring Security, securing **100% of write operations** and enforcing role-based access for users and admins.",
+      "Designed a **layered architecture (Controllers, Services, Repositories, DTOs)**, reducing controller complexity and enabling clear separation of concerns across **5+ domain modules**.",
+      "Integrated **PostgreSQL with Spring Data JPA**, persisting relational data with entity mapping and handling **thousands of test records** during local development.",
+      "Containerized the application using **Docker and Docker Compose**, enabling **one-command local setup** for the API and database and reducing environment setup time from ~30 minutes to under 2 minutes."
+    ],
+    tech: [
+      "Java", "Spring Boot", "Spring Security", "REST APIs", "JWT",
+      "PostgreSQL", "JPA / Hibernate",
+      "Layered Architecture", "DTO Pattern",
+      "Docker", "RBAC"
+    ],
+    github: "https://github.com/progFilthi/FilthiBlog",
+    githubFrontend: "https://github.com/progFilthi/filthiblogClient",
+    live: "https://filthiblog-client.vercel.app/",
   },
   {
     title: "E-Commerce Dashboard",
