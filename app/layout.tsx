@@ -49,7 +49,6 @@ export default function RootLayout({
         >
           {children}
         </ThemeProvider>
-        <script src="https://www.glancelytics.com/js/script.js" data-domain="emma-portfolio-three.vercel.app" defer></script>
       </body>
     </html>
   );

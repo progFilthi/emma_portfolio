@@ -86,6 +86,17 @@ export function Header() {
           </ul>
 
           <div className="flex items-center gap-2">
+            {/* Sponsor Button - visible on desktop */}
+            <div className="hidden md:block mr-2">
+              <iframe
+                src="https://github.com/sponsors/progFilthi/button"
+                title="Sponsor progFilthi"
+                height="32"
+                width="114"
+                style={{ border: 0, borderRadius: "6px" }}
+              ></iframe>
+            </div>
+
             {/* Theme toggle - visible on desktop only */}
             <div className="hidden md:block">
               <ThemeToggle />
@@ -199,6 +210,16 @@ export function Header() {
                   <div className="flex items-center justify-between px-4 py-2">
                     <span className="text-sm text-muted-foreground">Theme</span>
                     <ThemeToggle />
+                  </div>
+                  <div className="flex items-center justify-between px-4 py-2">
+                    <span className="text-sm text-muted-foreground">Sponsor</span>
+                    <iframe
+                      src="https://github.com/sponsors/progFilthi/button"
+                      title="Sponsor progFilthi"
+                      height="32"
+                      width="114"
+                      style={{ border: 0, borderRadius: "6px" }}
+                    ></iframe>
                   </div>
                 </motion.div>
               </nav>
