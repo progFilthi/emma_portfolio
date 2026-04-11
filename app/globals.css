@@ -24,48 +24,56 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  
-  /* Custom teal accent */
-  --color-teal: #14b8a6;
-  --color-teal-light: #5eead4;
-  --color-teal-dark: #0d9488;
+
+  /* Brand palette */
+  --color-teal: #0ff4c6;
+  --color-teal-light: #6ffde4;
+  --color-teal-dark: #00c9a0;
+  --color-orange: #ff6b35;
+  --color-orange-light: #ff9166;
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
 }
 
 :root {
-  --radius: 0.625rem;
-  --background: #ffffff;
-  --foreground: #18181b;
+  --radius: 0.75rem;
+  --background: #fafafa;
+  --foreground: #0a0a0f;
   --card: #ffffff;
-  --card-foreground: #18181b;
-  --primary: #18181b;
+  --card-foreground: #0a0a0f;
+  --primary: #0a0a0f;
   --primary-foreground: #fafafa;
-  --secondary: #f4f4f5;
-  --secondary-foreground: #18181b;
-  --muted: #f4f4f5;
-  --muted-foreground: #71717a;
-  --accent: #14b8a6;
-  --accent-foreground: #ffffff;
-  --border: #e4e4e7;
-  --input: #e4e4e7;
-  --ring: #14b8a6;
+  --secondary: #f0f0f5;
+  --secondary-foreground: #0a0a0f;
+  --muted: #f0f0f5;
+  --muted-foreground: #6b6b80;
+  --accent: #0ff4c6;
+  --accent-foreground: #0a0a0f;
+  --border: #e2e2eb;
+  --input: #e2e2eb;
+  --ring: #0ff4c6;
+  --surface: #f5f5fa;
+  --surface-elevated: #ffffff;
 }
 
 .dark {
-  --background: #09090b;
-  --foreground: #fafafa;
-  --card: #18181b;
-  --card-foreground: #fafafa;
-  --primary: #fafafa;
-  --primary-foreground: #18181b;
-  --secondary: #27272a;
-  --secondary-foreground: #fafafa;
-  --muted: #27272a;
-  --muted-foreground: #a1a1aa;
-  --accent: #14b8a6;
-  --accent-foreground: #ffffff;
-  --border: #27272a;
-  --input: #27272a;
-  --ring: #14b8a6;
+  --background: #060610;
+  --foreground: #f0f0ff;
+  --card: #0e0e1e;
+  --card-foreground: #f0f0ff;
+  --primary: #f0f0ff;
+  --primary-foreground: #060610;
+  --secondary: #141428;
+  --secondary-foreground: #f0f0ff;
+  --muted: #141428;
+  --muted-foreground: #8080a0;
+  --accent: #0ff4c6;
+  --accent-foreground: #060610;
+  --border: #1e1e38;
+  --input: #1e1e38;
+  --ring: #0ff4c6;
+  --surface: #0a0a1a;
+  --surface-elevated: #121224;
 }
 
 @layer base {
@@ -80,20 +88,131 @@
   }
 }
 
-/* Custom scrollbar */
+/* === Custom scrollbar === */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--muted);
+  background: transparent;
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--muted-foreground);
-  border-radius: 4px;
+  background: var(--border);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0ff4c6;
 }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--foreground);
+/* === Noise grain overlay === */
+.grain-overlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  z-index: 9999;
+}
+
+/* === Glow utilities === */
+.glow-teal {
+  box-shadow: 0 0 32px rgba(15, 244, 198, 0.2), 0 0 64px rgba(15, 244, 198, 0.08);
+}
+.glow-teal-sm {
+  box-shadow: 0 0 16px rgba(15, 244, 198, 0.15);
+}
+.text-glow-teal {
+  text-shadow: 0 0 24px rgba(15, 244, 198, 0.5);
+}
+
+/* === Grid dot background === */
+.dot-grid {
+  background-image: radial-gradient(circle, rgba(15, 244, 198, 0.12) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* === Glassmorphism === */
+.glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.glass-strong {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(15, 244, 198, 0.15);
+}
+
+/* === Gradient text === */
+.gradient-text {
+  background: linear-gradient(135deg, #0ff4c6 0%, #6ffde4 50%, #0ff4c6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-warm {
+  background: linear-gradient(135deg, #ff6b35, #ff9166, #ffd166);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* === Tech badge pill === */
+.tech-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.025em;
+  border: 1px solid rgba(15, 244, 198, 0.2);
+  color: #0ff4c6;
+  background: rgba(15, 244, 198, 0.06);
+  transition: all 0.2s ease;
+}
+.tech-pill:hover {
+  background: rgba(15, 244, 198, 0.12);
+  border-color: rgba(15, 244, 198, 0.4);
+}
+
+/* === Animated gradient border === */
+@keyframes border-rotate {
+  from { --border-angle: 0deg; }
+  to   { --border-angle: 360deg; }
+}
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.animated-border {
+  position: relative;
+  background: conic-gradient(from var(--border-angle), transparent 75%, #0ff4c6 100%);
+  animation: border-rotate 4s linear infinite;
+  border-radius: inherit;
+  padding: 1px;
+}
+
+/* === Section divider === */
+.section-divider {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, #0ff4c6, transparent);
+  border-radius: 999px;
+  margin: 1rem auto;
+}
+
+/* === Card hover lift === */
+.card-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(15, 244, 198, 0.1), 0 4px 16px rgba(0,0,0,0.3);
 }
