@@ -1,244 +1,37 @@
 export interface Project {
+  id: string;
   title: string;
   tagline: string;
   description: string;
-  bullets?: string[];
   tech: string[];
   github?: string;
-  githubFrontend?: string;
   live?: string;
-  featured?: boolean;
-  image?: string;
+  year: string;
 }
-
-export interface DirtyBucketFeature {
-  category: string;
-  icon: string;
-  items: string[];
-}
-
-export const dirtyBucketFeatures: DirtyBucketFeature[] = [
-  {
-    category: "Payment & Monetization",
-    icon: "💳",
-    items: [
-      "Dodo Payments integration with 3-tier license system (Basic, Premium, Exclusive)",
-      "Subscription plans: Starter (free, 10 uploads, 15% commission), Pro ($10/mo · $99/yr, 5% commission), Ultra ($19.99/mo · $199.99/yr, 0% commission)",
-      "Dynamic commission calculation engine applied at checkout",
-      "Resend for transactional emails on purchases and sales"
-    ]
-  },
-  {
-    category: "Media Processing Pipeline",
-    icon: "🎧",
-    items: [
-      "RabbitMQ queue for async beat processing after upload",
-      "FFmpeg converts WAV source → Preview clip · Full MP3 · Original WAV",
-      "All artifacts stored on AWS S3 with pre-signed URL delivery",
-      "Producers and artists receive instant download access after transaction"
-    ]
-  },
-  {
-    category: "Auth & Security",
-    icon: "🔐",
-    items: [
-      "Google OAuth2 + JWT-based email/password authentication",
-      "RBAC with three roles: Admin, Producer, Artist",
-      "Spring Security securing all sensitive endpoints",
-      "Role-gated upload limits and commission logic per subscription tier"
-    ]
-  },
-  {
-    category: "Infrastructure & DevOps",
-    icon: "☁️",
-    items: [
-      "Java Spring Boot REST API with clean layered architecture deployed to Railway",
-      "Dedicated headless worker service on Railway — isolated CPU lane for FFmpeg beat processing",
-      "Docker + Docker Compose for reproducible local and production environments",
-      "RabbitMQ as the central message broker decoupling upload from processing"
-    ]
-  },
-  {
-    category: "Hosting & Managed Services",
-    icon: "🚂",
-    items: [
-      "Railway — hosts the Spring Boot API server with zero-config deployments",
-      "Railway — second headless service dedicated to the FFmpeg worker (CPU-intensive, separated by design)",
-      "Railway Managed PostgreSQL — production database with auto-backups and connection pooling",
-      "AWS S3 for beat file blob storage with pre-signed URL delivery to artists and producers"
-    ]
-  },
-  {
-    category: "Frontend Architecture",
-    icon: "⚡",
-    items: [
-      "Next.js 14 App Router with TypeScript and TanStack Query",
-      "Tailwind CSS + shadcn/ui component library",
-      "Server-side data fetching with optimistic updates",
-      "Google OAuth2 social login flow on the frontend"
-    ]
-  }
-];
-
-export const dirtyBucketTechStack = [
-  // Backend
-  { name: "Java", color: "orange" },
-  { name: "Spring Boot", color: "green" },
-  { name: "Spring Security", color: "green" },
-  { name: "JPA / Hibernate", color: "green" },
-  { name: "RabbitMQ", color: "orange" },
-  { name: "FFmpeg", color: "red" },
-  // Auth
-  { name: "JWT", color: "teal" },
-  { name: "Google OAuth2", color: "teal" },
-  { name: "RBAC", color: "teal" },
-  // Frontend
-  { name: "Next.js", color: "neutral" },
-  { name: "TypeScript", color: "blue" },
-  { name: "TanStack Query", color: "red" },
-  { name: "Tailwind CSS", color: "blue" },
-  { name: "shadcn/ui", color: "neutral" },
-  // Hosting & Cloud
-  { name: "Railway", color: "teal" },
-  { name: "Railway Worker", color: "teal" },
-  { name: "AWS S3", color: "orange" },
-  { name: "Docker", color: "blue" },
-  { name: "PostgreSQL", color: "blue" },
-  // Services
-  { name: "Dodo Payments", color: "teal" },
-  { name: "Resend", color: "neutral" },
-];
-
-export const dirtyBucketLicenses = [
-  {
-    name: "Basic",
-    price: "Affordable",
-    description: "MP3 lease for content creators and demo artists",
-    perks: ["MP3 deliverable", "Non-exclusive", "Limited distribution", "Stream-ready"]
-  },
-  {
-    name: "Premium",
-    price: "Mid-tier",
-    description: "WAV + MP3 for emerging artists ready to release",
-    perks: ["WAV + MP3 deliverables", "Non-exclusive", "Wide distribution", "Radio-ready"]
-  },
-  {
-    name: "Exclusive",
-    price: "Full rights",
-    description: "Full ownership transfer — beat is taken off the market",
-    perks: ["All file formats", "Exclusive rights", "Unlimited distribution", "Stems included"]
-  }
-];
-
-export const dirtyBucketSubscriptions = [
-  {
-    name: "Starter",
-    price: "Free",
-    commission: "15%",
-    uploads: "10 uploads max",
-    color: "neutral",
-    highlight: false,
-  },
-  {
-    name: "Pro",
-    monthly: "$10/mo",
-    yearly: "$99/yr",
-    commission: "5%",
-    uploads: "Unlimited uploads",
-    color: "teal",
-    highlight: true,
-  },
-  {
-    name: "Ultra",
-    monthly: "$19.99/mo",
-    yearly: "$199.99/yr",
-    commission: "0%",
-    uploads: "Unlimited uploads",
-    color: "orange",
-    highlight: false,
-  }
-];
 
 export const projects: Project[] = [
   {
+    id: "dirtybucket",
     title: "DirtyBucket",
-    tagline: "Beat marketplace SaaS for producers & artists",
+    tagline: "Beat selling platform for producers & artists",
     description:
-      "A full-stack SaaS platform where music producers sell beats to artists. Features a complete async media processing pipeline, subscription tiers with commission logic, 3-tier licensing, OAuth2 + JWT security, and Dodo Payments integration.",
-    bullets: [
-      "Architected an **async beat processing pipeline** using **RabbitMQ** — WAV files queued post-upload, then **FFmpeg** converts them into preview clips, full MP3s, and original WAV files, all stored on **AWS S3**.",
-      "Implemented a **3-tier subscription model** (Starter/Pro/Ultra) with dynamic commission rates (15% / 5% / 0%) enforced server-side, integrated with **Dodo Payments** for recurring billing.",
-      "Built a **3-license system** (Basic · Premium · Exclusive) with per-beat pricing, rights management, and automatic beat removal from marketplace on exclusive purchase.",
-      "Secured the platform with **Google OAuth2 + JWT authentication** and **RBAC** across three roles (Admin, Producer, Artist) using Spring Security.",
-      "Delivered a **Next.js + TanStack Query** frontend with optimistic updates, a real-time producer dashboard showing earnings, upload stats, and commission breakdowns.",
-      "Containerized with **Docker + Docker Compose**; **Resend** handles all transactional emails for purchases and sales receipts.",
-    ],
-    tech: [
-      "Java", "Spring Boot", "Spring Security", "JWT", "Google OAuth2", "RBAC",
-      "RabbitMQ", "FFmpeg", "AWS S3", "PostgreSQL", "JPA / Hibernate",
-      "Next.js", "TypeScript", "TanStack Query", "Tailwind CSS", "shadcn/ui",
-      "Docker", "Dodo Payments", "Resend"
-    ],
+      "A full-stack SaaS platform where music producers sell beats to artists. Built with an async media processing pipeline (RabbitMQ + FFmpeg), 3-tier licensing, subscription plans with dynamic commission rates, and OAuth2 + JWT authentication.",
+    tech: ["Java", "Spring Boot", "RabbitMQ", "FFmpeg", "AWS S3", "PostgreSQL", "Next.js", "Docker"],
     github: "https://github.com/progFilthi",
-    live: "https://dirtybucket.shop",
-    featured: true,
-    image: "/dashboard-preview.png",
+    live: "https://dirtybucket.store",
+    year: "2024",
   },
   {
-    title: "Blog Post Application",
-    tagline: "Production-grade Java REST API with full auth",
+    id: "filthilink",
+    title: "FilthiLink",
+    tagline: "URL shortener application",
     description:
-      "A robust backend system for a blog platform built with modern Java practices. Complete RESTful API, JWT authentication, RBAC, and a clean layered architecture — containerized with Docker.",
-    bullets: [
-      "Developed a **RESTful blog backend** using **Java and Spring Boot**, implementing full CRUD APIs with **20+ endpoints** following REST conventions.",
-      "Implemented **JWT authentication and RBAC** with Spring Security, securing **100% of write operations** and enforcing role-based access for users and admins.",
-      "Designed a **layered architecture** (Controllers → Services → Repositories → DTOs), reducing controller complexity across **5+ domain modules**.",
-      "Integrated **PostgreSQL with Spring Data JPA**, persisting relational data with entity mapping.",
-      "Containerized with **Docker and Docker Compose** for **one-command local setup** — reduced environment setup from ~30 minutes to under 2 minutes.",
-    ],
-    tech: [
-      "Java", "Spring Boot", "Spring Security", "REST APIs", "JWT",
-      "PostgreSQL", "JPA / Hibernate", "DTO Pattern", "Docker", "RBAC"
-    ],
-    github: "https://github.com/progFilthi/FilthiBlog",
-    githubFrontend: "https://github.com/progFilthi/filthiblogClient",
-    live: "https://filthiblog-client.vercel.app/",
-    featured: false,
+      "A clean, fast URL shortener built for developers and power users. Generates short links, tracks click analytics, and handles redirects at speed. Simple API-first design with a polished frontend.",
+    tech: ["Java", "Spring Boot", "PostgreSQL", "Next.js", "TypeScript", "Docker"],
+    github: "https://github.com/progFilthi",
+    live: "https://app.filthilink.store",
+    year: "2025",
   },
-];
-
-export interface Skill {
-  name: string;
-  category: "backend" | "fullstack" | "cloud" | "tools";
-}
-
-export const skills: Skill[] = [
-  // Backend
-  { name: "Java", category: "backend" },
-  { name: "Spring Boot", category: "backend" },
-  { name: "Spring Security", category: "backend" },
-  { name: "PostgreSQL", category: "backend" },
-  { name: "REST APIs", category: "backend" },
-  { name: "Microservices", category: "backend" },
-  { name: "RabbitMQ", category: "backend" },
-
-  // Full Stack
-  { name: "React", category: "fullstack" },
-  { name: "Next.js", category: "fullstack" },
-  { name: "TypeScript", category: "fullstack" },
-  { name: "TanStack Query", category: "fullstack" },
-  { name: "Tailwind CSS", category: "fullstack" },
-
-  // Cloud & DevOps
-  { name: "AWS S3", category: "cloud" },
-  { name: "Docker", category: "cloud" },
-  { name: "Docker Compose", category: "cloud" },
-  { name: "FFmpeg", category: "cloud" },
-
-  // Tools
-  { name: "Git", category: "tools" },
-  { name: "Linux", category: "tools" },
-  { name: "JWT / OAuth2", category: "tools" },
 ];
 
 export const socialLinks = {
@@ -247,3 +40,207 @@ export const socialLinks = {
   email: "mailto:emmanuel.f0927@gmail.com",
   youtube: "https://www.youtube.com/@ProgrammerFilthi",
 };
+
+// ─── Skills data ──────────────────────────────────────────────────────────────
+
+export interface Skill {
+  name: string;
+  category: string;
+}
+
+export const skills: Skill[] = [
+  // Backend
+  { name: "Java", category: "backend" },
+  { name: "Spring Boot", category: "backend" },
+  { name: "Spring Security", category: "backend" },
+  { name: "PostgreSQL", category: "backend" },
+  { name: "RabbitMQ", category: "backend" },
+  { name: "Redis", category: "backend" },
+  { name: "FFmpeg", category: "backend" },
+  // Full Stack
+  { name: "Next.js", category: "fullstack" },
+  { name: "TypeScript", category: "fullstack" },
+  { name: "React", category: "fullstack" },
+  { name: "Tailwind CSS", category: "fullstack" },
+  { name: "Node.js", category: "fullstack" },
+  // Cloud & DevOps
+  { name: "Docker", category: "cloud" },
+  { name: "AWS (S3, EC2, RDS)", category: "cloud" },
+  { name: "Kubernetes", category: "cloud" },
+  { name: "CI/CD", category: "cloud" },
+  // Tools
+  { name: "Git", category: "tools" },
+  { name: "VS Code", category: "tools" },
+  { name: "IntelliJ IDEA", category: "tools" },
+  { name: "Postman", category: "tools" },
+  { name: "Linux", category: "tools" },
+];
+
+// ─── DirtyBucket showcase data ───────────────────────────────────────────────
+
+export interface Feature {
+  category: string;
+  icon: string;
+  items: string[];
+}
+
+export interface TechItem {
+  name: string;
+  color: string;
+}
+
+export interface License {
+  name: string;
+  price: string;
+  description: string;
+  perks: string[];
+}
+
+export interface Subscription {
+  name: string;
+  color: string;
+  highlight?: boolean;
+  monthly?: string;
+  yearly?: string;
+  price?: string;
+  commission: string;
+  uploads: string;
+}
+
+export const dirtyBucketFeatures: Feature[] = [
+  {
+    category: "Media Pipeline",
+    icon: "🎧",
+    items: [
+      "Async beat processing via RabbitMQ",
+      "FFmpeg transcoding to multiple formats",
+      "Automatic waveform & thumbnail generation",
+      "S3 storage with CDN delivery",
+    ],
+  },
+  {
+    category: "Licensing & Rights",
+    icon: "📜",
+    items: [
+      "3-tier license per beat (Basic / Premium / Exclusive)",
+      "License terms enforced at download",
+      "Per-beat ownership tracking",
+    ],
+  },
+  {
+    category: "Subscription System",
+    icon: "💳",
+    items: [
+      "Dynamic commission rates per tier",
+      "Monthly & yearly billing cycles",
+      "Upload limits enforced per plan",
+    ],
+  },
+  {
+    category: "Auth & Security",
+    icon: "🔐",
+    items: [
+      "OAuth2 social login (Google, GitHub)",
+      "JWT access + refresh token flow",
+      "Role-based access (producer / admin)",
+    ],
+  },
+  {
+    category: "Producer Dashboard",
+    icon: "📊",
+    items: [
+      "Real-time sales analytics",
+      "Earnings & payout tracking",
+      "Beat upload & management UI",
+    ],
+  },
+  {
+    category: "Artist Experience",
+    icon: "🎤",
+    items: [
+      "Browse & preview beats by genre / mood",
+      "Shopping cart with license selection",
+      "Instant download after purchase",
+    ],
+  },
+];
+
+export const dirtyBucketTechStack: TechItem[] = [
+  { name: "Java 17", color: "orange" },
+  { name: "Spring Boot 3", color: "orange" },
+  { name: "Spring Security", color: "orange" },
+  { name: "PostgreSQL", color: "blue" },
+  { name: "RabbitMQ", color: "teal" },
+  { name: "FFmpeg", color: "neutral" },
+  { name: "AWS S3", color: "orange" },
+  { name: "Docker", color: "blue" },
+  { name: "Next.js 14", color: "neutral" },
+  { name: "TypeScript", color: "blue" },
+  { name: "Tailwind CSS", color: "teal" },
+  { name: "Stripe API", color: "purple" },
+];
+
+export const dirtyBucketLicenses: License[] = [
+  {
+    name: "Basic",
+    price: "$29.99",
+    description: "MP3 lease — up to 5,000 streams.",
+    perks: [
+      "MP3 file (320kbps)",
+      "Up to 5,000 streams",
+      "Non-profit use only",
+      "Must credit producer",
+    ],
+  },
+  {
+    name: "Premium",
+    price: "$79.99",
+    description: "WAV lease — up to 50,000 streams.",
+    perks: [
+      "WAV + MP3 files",
+      "Up to 50,000 streams",
+      "Commercial use allowed",
+      "Radio & podcast permitted",
+    ],
+  },
+  {
+    name: "Exclusive",
+    price: "$299.99",
+    description: "Full buyout — unlimited use, beat removed from store.",
+    perks: [
+      "All file formats (WAV + MP3 + Stems)",
+      "Unlimited streams",
+      "Full commercial rights",
+      "Beat delisted after purchase",
+      "Certificate of ownership",
+    ],
+  },
+];
+
+export const dirtyBucketSubscriptions: Subscription[] = [
+  {
+    name: "Starter",
+    color: "neutral",
+    monthly: "$9.99/mo",
+    yearly: "$7.99/mo",
+    commission: "25%",
+    uploads: "10 beats/mo",
+  },
+  {
+    name: "Pro",
+    color: "teal",
+    highlight: true,
+    monthly: "$19.99/mo",
+    yearly: "$14.99/mo",
+    commission: "15%",
+    uploads: "Unlimited",
+  },
+  {
+    name: "Studio",
+    color: "orange",
+    monthly: "$39.99/mo",
+    yearly: "$29.99/mo",
+    commission: "8%",
+    uploads: "Unlimited",
+  },
+];

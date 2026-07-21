@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { socialLinks } from "@/data/projects";
 
@@ -8,23 +7,11 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <motion.footer
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="border-t border-border/50 py-10 px-6"
-    >
-      <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-3">
-          <div className="w-6 h-6 rounded-md bg-teal flex items-center justify-center text-background font-black text-[10px]">
-            EF
-          </div>
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} Emmanuel Francis. Built with Next.js.
-          </p>
-        </div>
-
+    <footer className="relative z-10 border-t border-border/40 px-6 py-8 max-w-5xl mx-auto">
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p className="text-xs text-muted-foreground">
+          © {currentYear} Emmanuel Francis
+        </p>
         <div className="flex items-center gap-5">
           <Link
             href={socialLinks.github}
@@ -43,15 +30,15 @@ export function Footer() {
             LinkedIn
           </Link>
           <Link
-            href="https://dirtybucket.shop"
+            href="https://dirtybucket.store"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-xs text-teal hover:text-teal-light transition-colors font-medium"
+            className="text-xs text-muted-foreground hover:text-foreground transition-colors"
           >
-            DirtyBucket ↗
+            DirtyBucket
           </Link>
         </div>
       </div>
-    </motion.footer>
+    </footer>
   );
 }

@@ -72,7 +72,7 @@ export function DirtyBucketShowcase() {
 
           <div className="flex items-center justify-center gap-3 mt-7">
             <Link
-              href="https://dirtybucket.shop"
+              href="https://dirtybucket.store"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-teal text-background font-semibold text-sm hover:bg-teal-dark transition-all duration-200 glow-teal-sm"
@@ -113,7 +113,7 @@ export function DirtyBucketShowcase() {
                 </div>
                 <div className="flex-1 mx-3 h-5 rounded-md bg-muted/60 flex items-center px-3">
                   <span className="text-[10px] text-muted-foreground/70">
-                    dirtybucket.shop
+                    dirtybucket.store
                   </span>
                 </div>
               </div>
