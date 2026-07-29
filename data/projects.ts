@@ -36,7 +36,7 @@ export const projects: Project[] = [
 
 export const socialLinks = {
   github: "https://github.com/progFilthi",
-  linkedin: "https://www.linkedin.com/in/emma09/",
+  linkedin: "https://www.linkedin.com/in/emma079/",
   email: "mailto:emmanuel.f0927@gmail.com",
   youtube: "https://www.youtube.com/@ProgrammerFilthi",
 };
